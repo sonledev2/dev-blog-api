@@ -1,4 +1,4 @@
-import { NestFactory } from '@nestjs/core';
+    import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { ConfigService } from '@nestjs/config';
 import { AppConfigKey, IAppConfig } from '../config/app.config';
@@ -13,7 +13,7 @@ export class App {
   public static async start(module: any) {
     const app = await NestFactory.create<NestExpressApplication>(module);
     await App.setup(app);
-  }
+  }               
 
   public static async setup(app: NestExpressApplication) {
     const configService = app.get(ConfigService);
@@ -22,7 +22,7 @@ export class App {
     );
     app.use(helmet());
     app.enableCors({
-      origin: ['http://localhost:3000', 'http://localhost:3030', 'https://dev-blog-fe.vercel.app'],
+      origin: ['http://localhost:3000', 'http://localhost:3030', 'https://dev-blog-fe.vercel.app', 'https://dev-blog-admin.vercel.app'],
       methods: 'GET, HEAD, PUT, POST, DELETE, OPTIONS, PATCH',
       credentials: true,
       allowedHeaders: 'Content-Type, Authorization',
